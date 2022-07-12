@@ -1,0 +1,26 @@
+FolderBrowserDialog fbDialog = new FolderBrowserDialog();
+            {
+                fbDialog.SelectedPath = _selectedPath;
+            };
+
+            // ダイアログの説明文を指定する
+            fbDialog.Description = "ダイアログの説明文";
+
+            // 「新しいフォルダーの作成する」ボタンを表示する
+            fbDialog.ShowNewFolderButton = true;
+
+            //フォルダを選択するダイアログを表示する
+            if (fbDialog.ShowDialog() == DialogResult.OK)
+            {
+                _selectedPath = fbDialog.SelectedPath;
+
+                txt_fileName.Text = fbDialog.SelectedPath;
+                Console.WriteLine(fbDialog.SelectedPath);
+            }
+            else
+            {
+                Console.WriteLine("キャンセルされました");
+            }
+
+            // オブジェクトを破棄する
+            fbDialog.Dispose();
