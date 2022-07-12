@@ -1,0 +1,25 @@
+OpenFileDialog ofd = new OpenFileDialog();
+            ofd.FileName = "Select Folder";
+            ofd.InitialDirectory = path;
+            ofd.Title = "Save file";
+            ofd.RestoreDirectory = true;
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                txt_fileName.Text = ofd.SafeFileName; //Get the path of specified file
+
+                if (ofd.SafeFileName != null)
+                {
+                    string txt1 = System.IO.Path.GetFullPath(ofd.FileName),
+                        txt2 = txt1.Replace("Select Folder", "").Trim();
+                    txt_fileName.Text = txt2.Replace(path, "").Replace(@"\", ""); ;
+                }
+
+
+                //Read the contents of the file into a stream
+                var fileStream = ofd.OpenFile();
+
+                using (StreamReader reader = new StreamReader(fileStream))
+                {
+                    var fileContent = reader.ReadToEnd();
+                }
+            }
