@@ -1,0 +1,28 @@
+CommonOpenFileDialog commonOpenFileDialog = new CommonOpenFileDialog();
+
+            // ダイアログのタイトル
+            commonOpenFileDialog.Title = "フォルダを選択してください。";
+
+            // 最後に選択したフォルダから始まる
+            commonOpenFileDialog.RestoreDirectory = true;
+
+            // フォルダ選択モード
+            commonOpenFileDialog.IsFolderPicker = true;
+
+
+            // デフォルトのフォルダ
+           // commonOpenFileDialog.InitialDirectory = path;            
+           
+
+            if (commonOpenFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                txt_fileName.Text = commonOpenFileDialog.FileName;
+                //MessageBox.Show("You selected folder : " + commonOpenFileDialog.FileName);
+
+               *//* Properties.Settings.Default.chooseFolder = txt_fileName.Text;
+                Properties.Settings.Default.Save();*//*
+            }
+            else
+            {
+                Console.WriteLine("キャンセルされました");
+            }
